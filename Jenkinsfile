@@ -62,11 +62,11 @@ pipeline {
 
 
         stage('Unit Testing - Chai/Mocha') {
-            steps { 
+            steps {   
                    dir('F21AO-DevOps-MicroServices\\patients_microservice') {
                                 script {
                                 echo 'Patient database Testing with Chai/Mocha'
-                                bat 'npm test'
+                                bat 'mocha index-test.js --exit'
                                     }
                                 }
                     }
