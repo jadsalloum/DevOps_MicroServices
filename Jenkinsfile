@@ -66,7 +66,8 @@ pipeline {
                    dir('F21AO-DevOps-MicroServices\\patients_microservice') {
                                 script {
                                 echo 'Patient database Testing with Chai/Mocha'
-                                bat 'mocha index-test.js --exit'
+                                bat 'npm install'
+                                bat 'npm test'
                                     }
                                 }
                     }
