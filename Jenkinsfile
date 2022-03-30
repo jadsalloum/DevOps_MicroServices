@@ -9,7 +9,11 @@ pipeline {
             }      
         }
         stage('MicroServices - Startup in Parallel') {
+
+
             parallel {
+
+
                 stage('API_Gateway') {
                     steps {
                         dir('F21AO-DevOps-MicroServices\\api_gateway'){
@@ -52,44 +56,23 @@ pipeline {
                 }
             }      
         }
+
+
+
+
+
         stage('Unit Testing - Chai/Mocha') {
-                parallel {
-                    stage('Patient database Test') {
-                        steps {
-                            dir('F21AO-DevOps-MicroServices\\patients_microservice') {
+            steps { 
+                   dir('F21AO-DevOps-MicroServices\\patients_microservice') {
                                 script {
                                 echo 'Patient database Testing with Chai/Mocha'
                                 bat 'npm test'
                                     }
                                 }
-                            }
-                        }
                     }
+        }       
+                    
 
-                    stage('Staff database Test') {
-                        steps {
-                            dir('F21AO-DevOps-MicroServices\\users_microservice') {
-                                script {
-                                echo 'Staff database Test'
-                                bat 'npm test'
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    stage('Appointments database Test') {
-                        steps {
-                            dir('F21AO-DevOps-MicroServices\\appointment_microservice') {
-                                script {
-                                        echo 'Unit Testing Patient Registration Microservice'
-                                        bat 'npm test'
-                                    }
-                                }
-                            }
-                        }
-                    }
-        }
         stage('Microservice containers build') {
                 steps {
                     script {
@@ -102,7 +85,8 @@ pipeline {
                     }
                     }
                 }
-        }
+
+
         stage('deploy') {
             steps {
                 script {
@@ -111,6 +95,7 @@ pipeline {
                     }
                 }
             }
+    }
         post {
             always {
                 echo 'Pipeline fully executed.'
@@ -127,5 +112,5 @@ pipeline {
             changed {
                 echo 'Changes detected..'
             }
-    }
+        }
 }
