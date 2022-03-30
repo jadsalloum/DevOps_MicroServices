@@ -1,0 +1,143 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apigateway
+  labels:
+    app.kubernetes.io/name: Api_Gateway
+    app.kubernetes.io/component: Api_Gateway
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  # type: LoadBalancer
+  ports:
+    - port: 3333
+  selector:
+    app.kubernetes.io/name: Api_Gateway
+    app.kubernetes.io/component: Api_Gateway
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authentication
+  labels:
+    app.kubernetes.io/name: Authentication
+    app.kubernetes.io/component: Authentication
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+#  type: LoadBalancer
+  ports:
+    - port: 3001
+  selector:
+    app.kubernetes.io/name: Authentication
+    app.kubernetes.io/component: Authentication
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: patients
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+ # type: LoadBalancer
+  ports:
+    - port: 3002
+  selector:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appointments
+  labels:
+    app.kubernetes.io/name: Appointments
+    app.kubernetes.io/component: Appointments
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  # type: LoadBalancer
+  ports:
+    - port: 3003
+  selector:
+    app.kubernetes.io/name: Appointments
+    app.kubernetes.io/component: Appointments
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: users
+  labels:
+    app.kubernetes.io/name: Users
+    app.kubernetes.io/component: Users
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  # type: LoadBalancer
+  ports:
+    - port: 3004
+  selector:
+    app.kubernetes.io/name: Users
+    app.kubernetes.io/component: Users
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: telegraf
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  # type: LoadBalancer
+  ports:
+    - port: 8125
+  selector:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+#  type: LoadBalancer
+  ports:
+    - port: 8086
+  selector:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+ # type: LoadBalancer
+  ports:
+    - port: 3000
+  selector:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+

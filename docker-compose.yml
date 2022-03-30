@@ -1,0 +1,29 @@
+version: '3'
+services:
+  api_gateway:
+    hostname: 'api_gateway'
+    build: './API_Gateway'
+    ports:
+      - "3333:3333"
+  authentication:
+    hostname: 'authentication'
+    build: './Authentication_MicroService'
+    ports:
+      - "3001:3001"
+    depends_on:
+      - api_gateway
+  appointments:
+    hostname: 'appointments'
+    build: './Appointments_MicroService'
+    ports:
+      - "3003:3003"
+  patients:
+    hostname: 'patients'
+    build: './Patients_MicroService'
+    ports:
+    - "3002:3002"
+  users:
+    hostname: 'users'
+    build: './Users_MicroService'
+    ports:
+    - "3004:3004"

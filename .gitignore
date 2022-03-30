@@ -1,0 +1,6 @@
+API_Gateway/node_modules/
+Appointments_MicroService/node_modules/
+Authentication_MicroService/node_modules/
+Patients_MicroService/node_modules/
+Users_MicroService/node_modules/
+node_modules/

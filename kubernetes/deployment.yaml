@@ -1,0 +1,217 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apigateway
+  labels:
+    app.kubernetes.io/name: API_Gateway
+    app.kubernetes.io/component: API_Gateway
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: API_Gateway
+      app.kubernetes.io/component: API_Gateway
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: API_Gateway
+        app.kubernetes.io/component: API_Gateway
+    spec:
+      containers:
+        - name: apigateway
+          image: f21ao-devops_microservices_api_gateway
+          imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 3333
+            
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication
+  labels:
+    app.kubernetes.io/name: Authentication
+    app.kubernetes.io/component: Authentication
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: Authentication
+      app.kubernetes.io/component: Authentication
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: Authentication
+        app.kubernetes.io/component: Authentication
+    spec:
+      containers:
+        - name: authentication
+          image: f21ao-devops_microservices_authentication
+          imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 3001
+            
+            
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patients
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: Patients
+      app.kubernetes.io/component: Patients
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: Patients
+        app.kubernetes.io/component: Patients
+    spec:
+      containers:
+        - name: patients
+          image: f21ao-devops_microservices_patients
+          imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 3002
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointments
+  labels:
+    app.kubernetes.io/name: Appointments
+    app.kubernetes.io/component: Appointments
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: Appointments
+      app.kubernetes.io/component: Appointments
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: Appointments
+        app.kubernetes.io/component: Appointments
+    spec:
+      containers:
+        - name: appointments
+          image: f21ao-devops_microservices_appointments
+          imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 3003
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users
+  labels:
+    app.kubernetes.io/name: Users
+    app.kubernetes.io/component: Users
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: Users
+      app.kubernetes.io/component: Users
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: Users
+        app.kubernetes.io/component: Users
+    spec:
+      containers:
+        - name: users
+          image: f21ao-devops_microservices_users
+          imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 3004
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegraf
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: Patients
+      app.kubernetes.io/component: Patients
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: Patients
+        app.kubernetes.io/component: Patients
+    spec:
+      containers:
+        - name: telegraf
+          image: telegraf
+          imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 8125
+            
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: Patients
+      app.kubernetes.io/component: Patients
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: Patients
+        app.kubernetes.io/component: Patients
+    spec:
+      containers:
+        - name: influxdb
+          image: influxdb
+          #imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 8086
+            
+            
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  labels:
+    app.kubernetes.io/name: Patients
+    app.kubernetes.io/component: Patients
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: Patients
+      app.kubernetes.io/component: Patients
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: Patients
+        app.kubernetes.io/component: Patients
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana
+          imagePullPolicy: Never ## use local image
+          ports:
+            - containerPort: 3000
