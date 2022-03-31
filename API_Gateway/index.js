@@ -36,7 +36,7 @@ app.use("/Appointments",proxy('http://appointments:3003'));
 app.use("/Users",proxy('http://users:3004'));
 */
 
-app.listen(3333, () => console.log('Gateway is listening on port 3333 .....'));
+app.listen(3333, () => console.log('Gateway is listening on port 3333..... '));
 
 /*
 
