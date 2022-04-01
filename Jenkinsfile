@@ -75,6 +75,7 @@ pipeline {
 
         stage('Microservice containers build') {
                 steps {
+                     dir('F21AO-DevOps-MicroServices\\patients_microservice') {
                     script {
                     echo 'Spinning down running containers'
                     
@@ -84,17 +85,18 @@ pipeline {
                     bat 'docker-compose build'
                     }
                     }
-                }
+                }}
 
 
         stage('deploy') {
             steps {
+                 dir('F21AO-DevOps-MicroServices\\patients_microservice') {
                 script {
                 bat 'docker-compose up -d'
                 echo 'MicroServices are being deployed in Dockers'
                     }
                 }
-            }
+            }}
     }
         post {
             always {
