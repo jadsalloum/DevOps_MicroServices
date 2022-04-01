@@ -1,0 +1,85 @@
+Docker Dashboard Using Grafana, Prometheus & Node Exporter
+https://www.youtube.com/watch?v=83LWo7h_hvs
+
+Grafana
+http://localhost:32715/
+
+Grafana / influx/
+https://www.youtube.com/watch?v=NOWoLfpY2kE
+
+monitoring data
+https://github.com/influxdata/telegraf/tree/master/plugins/inputs
+
+
+kubectl delete deployments apigateway
+kubectl delete deployments authentication
+kubectl delete deployments patients
+kubectl delete deployments appointments
+kubectl delete deployments users
+kubectl delete deployments telegraf
+kubectl delete deployments influxdb
+kubectl delete deployments grafana
+
+kubectl delete service apigateway-service
+kubectl delete service authentication-service
+kubectl delete service patients-service
+kubectl delete service appointments-service
+kubectl delete service users-service
+kubectl delete service grafana-service
+kubectl delete service telegraf-service
+kubectl delete service influxdb-service
+
+kubectl delete service apigateway
+kubectl delete service authentication
+kubectl delete service patients
+kubectl delete service appointments
+kubectl delete service users
+kubectl delete service grafana
+kubectl delete service telegraf
+kubectl delete service influxdb
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+docker-compose build
+
+kubectl apply -f deployment.yaml
+kubectl apply -f services.yaml
+
+### EXPOSE SERVICES
+kubectl expose deployment apigateway --type=NodePort --name=apigateway-service
+kubectl expose deployment authentication --type=NodePort --name=authentication-service
+kubectl expose deployment patients --type=NodePort --name=patients-service
+kubectl expose deployment appointments --type=NodePort --name=appointments-service
+kubectl expose deployment users --type=NodePort --name=users-service
+kubectl expose deployment grafana --type=NodePort --name=grafana-service
+kubectl expose deployment telegraf --type=NodePort --name=telegraf-service
+kubectl expose deployment influxdb --type=NodePort --name=influxdb-service
+
+
+
+kubectl get pods
+kubectl get services
+
+kubectl get deployments 
+
+kubectl describe deployments apigateway
+ kubectl describe deployment apigateway
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+
+kubectl get services
+
+
+
+apigateway.default.svc.cluster.local
+
+
+#192.xxx.0.xxx"
+
+
+========================
+connect to specific pod:
+kubectl exec -it apigateway-7d9d8c887d-5p87l -- bash
+
+curl http://10.110.80.6:3001
+curl http://10.111.87.86:3001
