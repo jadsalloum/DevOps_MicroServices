@@ -50,6 +50,6 @@ const verifyuser_routes = require("./routes/verifyuser.js");
 app.use("/",verifyuser_routes, patient_routes);
 
 
-console.log('Patients Service ! Waiting.....');
+console.log('Patients Service ! Waiting..... New');
 
 
